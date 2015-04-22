@@ -72,7 +72,7 @@ namespace PrimeGame
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
             //MessageBox.Show(string.Format("X: {0} Y: {1}", e.X, e.Y));
-            gameboard.getPositionFromXY(e.X, e.Y);
+            gameboard.getGridPositionFromXY(e.X, e.Y);
         }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)

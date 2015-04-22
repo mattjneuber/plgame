@@ -42,11 +42,13 @@ namespace PrimeGame
             }
         }
 
-        public void getPositionFromXY(int X, int Y)
+        public Point getGridPositionFromXY(int X, int Y)
         {
             int newX = X / sizeX;
             int newY = Y / sizeY;
+
             Console.WriteLine(String.Format("Grid position {0}, {1} contains {2}, {3}", newX, newY, X, Y));
+            return new Point(newX, newY);
             //for (int i = 0; i < this.grid.GetLength(0); i++)
             //{
             //    for (int j = 0; j < this.grid.GetLength(1); j++)
