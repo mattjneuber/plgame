@@ -95,5 +95,27 @@ namespace PrimeGame
             gp.rect = rc;
             gpList.Add(gp);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            int gamePieces = rnd.Next(1, (gameboard.grid.Length));
+            MessageBox.Show(string.Format("rand num: {0} isPrime:  {1}", gamePieces, isPrime(gamePieces)));
+        }
+
+        public static Boolean isPrime(int number)
+        {
+            int boundery = (int)Math.Floor(Math.Sqrt(number));
+
+            if (number == 1) return false;
+            if (number == 2) return true;
+
+            for (int i = 2; i <= boundery; i++)
+            {
+                if (number % i == 0) return false;
+            }
+
+            return true;
+        }
     }
 }
