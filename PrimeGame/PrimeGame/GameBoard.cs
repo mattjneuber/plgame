@@ -22,10 +22,13 @@ namespace PrimeGame
             set;
         }
 
+        public Rectangle?[,] grid_pieces;
+
         public GameBoard()
         {
             grid = new Rectangle[8, 8];
             grid_bool = new Boolean[8, 8];
+            grid_pieces = new Rectangle?[8, 8];
 
             for (int i = 0; i < 8; i++)
             {
@@ -34,6 +37,7 @@ namespace PrimeGame
                     Rectangle rect = new Rectangle(0 + (i * sizeX), 0 + (j * sizeY), sizeX, sizeY);
                     grid[i, j] = rect;
                     grid_bool[i, j] = false;
+                    grid_pieces[i, j] = null;
                 }
             }
         }
