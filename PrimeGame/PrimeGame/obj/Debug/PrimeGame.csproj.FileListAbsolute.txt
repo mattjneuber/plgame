@@ -1,0 +1,9 @@
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGame\bin\Debug\PrimeGame.exe.config
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGame\obj\Debug\PrimeGame.exe
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGame\bin\Debug\PrimeGame.exe
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGame\bin\Debug\PrimeGame.pdb
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGame\obj\Debug\PrimeGame.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGame\obj\Debug\PrimeGame.Form1.resources
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGame\obj\Debug\PrimeGame.Properties.Resources.resources
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGame\obj\Debug\PrimeGame.csproj.GenerateResource.Cache
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGame\obj\Debug\PrimeGame.pdb
