@@ -3,3 +3,5 @@ PrimeGame/PrimeGame/obj/Debug/PrimeGame.exe
 *.pdb
 *.exe
 *.suo
+*.config
+PrimeGame/PrimeGame/bin/Debug/PrimeGame.vshost.exe.manifest

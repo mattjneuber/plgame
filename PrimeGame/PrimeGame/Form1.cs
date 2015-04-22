@@ -12,6 +12,9 @@ namespace PrimeGame
 {
     public partial class Form1 : Form
     {
+        List<GamePiece> gpList;
+
+        GameBoard gameboard;
         public Form1()
         {
             InitializeComponent();
@@ -19,7 +22,8 @@ namespace PrimeGame
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            gpList = new List<GamePiece>();
+            gameboard = new GameBoard();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -31,21 +35,26 @@ namespace PrimeGame
 
             GamePiece gp = new GamePiece();
             gp.rect = rc;
+
+            gpList.Add(gp);
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            Console.WriteLine("x");
             Pen blackpen = new Pen(Color.Black);
 
             List<Rectangle> rectList = new List<Rectangle>();
-            for (int i = 0; i < 8; i++)
+
+            
+
+            for (int i = 0; i < gameboard.grid.GetLength(0); i++)
             {
-                for (int j = 0; j < 8; j++)
+                for (int j = 0; j < gameboard.grid.GetLength(1); j++)
                 {
-                    Rectangle rect = new Rectangle(0 + (i * 30), 0 + (j * 30), 30, 30);
-                    rectList.Add(rect);
-                    e.Graphics.DrawRectangle(blackpen, rect);
+                    //Rectangle rect = new Rectangle(0 + (i * 30), 0 + (j * 30), 30, 30);
+                    //rectList.Add(rect);
+                    e.Graphics.DrawRectangle(blackpen, gameboard.grid[i, j]);
+                    
                     //e.Graphics.DrawRectangle(blackpen, 0 + (i * 30), 0 + (j * 30), 30, 30);
                 }
             }
@@ -62,7 +71,8 @@ namespace PrimeGame
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show(string.Format("X: {0} Y: {1}", e.X, e.Y));
+            //MessageBox.Show(string.Format("X: {0} Y: {1}", e.X, e.Y));
+            gameboard.getPositionFromXY(e.X, e.Y);
         }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
