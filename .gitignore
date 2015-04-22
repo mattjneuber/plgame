@@ -1,0 +1,5 @@
+*.cache
+PrimeGame/PrimeGame/obj/Debug/PrimeGame.exe
+*.pdb
+*.exe
+*.suo
