@@ -20,19 +20,12 @@ namespace PrimeGameWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        Boolean rectGrab;      // has a rectangle been grabbed?
-        Rectangle rectGrabbed; // the rectange which was grabbed
-        Point rectGrabPos;     // the position the rectangle was grabbed at
-        Point rectOriginPos;   // the original position of the rectangle
-        Boolean[,] cellOccupied = new Boolean[,] {{false, false, false, false, false, false, false, false},
-                                                  {false, true,  false, false, false, false, false, false},
-                                                  {false, false, false, true,  false, false, false, false},
-                                                  {false, false, false, false, false, true,  false, false},
-                                                  {false, false, true,  false, false, false, false, false},
-                                                  {false, false, false, false, false, false, false, false},
-                                                  {false, false, false, false, false, false, false, false},
-                                                  {false, false, false, false, false, false, false, false},};
-        DateTime startTime;
+        Boolean rectGrab;        // has a rectangle been grabbed?
+        Rectangle rectGrabbed;   // the rectange which was grabbed
+        Point rectGrabPos;       // the position the rectangle was grabbed at
+        Point rectOriginPos;     // the original position of the rectangle
+        Boolean[,] cellOccupied; // a 2d array representing which cells on the gameboard have pieces in them
+        DateTime startTime;      // the time the game started
 
         private void rect_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -171,6 +164,38 @@ namespace PrimeGameWPF
 
         private void canvas_Loaded(object sender, RoutedEventArgs e)
         {
+            // location and color of game pieces
+            int[] rows = { 1, 2, 3, 4 };
+            int[] columns = { 1, 3, 5, 2 };
+            Color[] colors = { Colors.Blue, Colors.Red, Colors.Green, Colors.Yellow };
+            
+            // mark all cells as unoccupied
+            cellOccupied = new Boolean[,] {{false, false, false, false, false, false, false, false},
+                                           {false, false, false, false, false, false, false, false},
+                                           {false, false, false, false, false, false, false, false},
+                                           {false, false, false, false, false, false, false, false},
+                                           {false, false, false, false, false, false, false, false},
+                                           {false, false, false, false, false, false, false, false},
+                                           {false, false, false, false, false, false, false, false},
+                                           {false, false, false, false, false, false, false, false},};
+            
+            // create game pieces
+            for (int i = 0; i < 4; i++)
+            {
+                Rectangle rect = new Rectangle();
+                rect.Width = 50;
+                rect.Height = 50;
+                rect.Fill = new SolidColorBrush(colors[i]);
+                rect.Stroke = new SolidColorBrush(Colors.Black);
+                rect.MouseLeftButtonDown += rect_MouseLeftButtonDown;
+                rect.MouseLeftButtonUp += rect_MouseLeftButtonUp;
+                rect.MouseMove += rect_MouseMove;
+                canvas.Children.Add(rect);
+                Canvas.SetTop(rect, rect.Height * rows[i]);
+                Canvas.SetLeft(rect, rect.Width * columns[i]);
+                cellOccupied[rows[i], columns[i]] = true;
+            }
+
             // start the timer
             startTime = DateTime.Now;
         }

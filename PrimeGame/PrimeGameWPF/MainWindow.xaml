@@ -20,42 +20,6 @@
         <Line X1="300" Y1="0" X2="300" Y2="400" Stroke="Black"/>
         <Line X1="350" Y1="0" X2="350" Y2="400" Stroke="Black"/>
 
-        <Rectangle
-            Width="50" Height="50"
-            Canvas.Left="50" Canvas.Top="50"
-            Fill="Blue" Stroke="Black"
-            MouseLeftButtonDown="rect_MouseLeftButtonDown"
-            MouseLeftButtonUp="rect_MouseLeftButtonUp"
-            MouseMove="rect_MouseMove"
-            />
-
-        <Rectangle
-            Width="50" Height="50"
-            Canvas.Left="150" Canvas.Top="100"
-            Fill="Red" Stroke="Black"
-            MouseLeftButtonDown="rect_MouseLeftButtonDown"
-            MouseLeftButtonUp="rect_MouseLeftButtonUp"
-            MouseMove="rect_MouseMove"
-            />
-
-        <Rectangle
-            Width="50" Height="50"
-            Canvas.Left="100" Canvas.Top="200"
-            Fill="Yellow" Stroke="Black"
-            MouseLeftButtonDown="rect_MouseLeftButtonDown"
-            MouseLeftButtonUp="rect_MouseLeftButtonUp"
-            MouseMove="rect_MouseMove"
-            />
-
-        <Rectangle
-            Width="50" Height="50"
-            Canvas.Left="250" Canvas.Top="150"
-            Fill="Green" Stroke="Black"
-            MouseLeftButtonDown="rect_MouseLeftButtonDown"
-            MouseLeftButtonUp="rect_MouseLeftButtonUp"
-            MouseMove="rect_MouseMove"
-            />
-
         <Button Content="Is Prime!"
             Canvas.Left="294" Canvas.Top="406" Width="102" Height="50"
             Click="button_Click"
