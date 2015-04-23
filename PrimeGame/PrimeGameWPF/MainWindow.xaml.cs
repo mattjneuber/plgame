@@ -202,7 +202,7 @@ namespace PrimeGameWPF
 
             Timer timer = new Timer();
             timer.Elapsed += delegate { updateTimer(startTime); };
-            timer.Interval = 500;
+            timer.Interval = 10;
             timer.Start();
         }
 
@@ -210,10 +210,7 @@ namespace PrimeGameWPF
         {
             DateTime finishTime = DateTime.Now;
             TimeSpan runTime = finishTime - st;
-            double totalSeconds = runTime.TotalSeconds;
-            int minutes = (int) totalSeconds/60;
-            int seconds = (int) totalSeconds % 60;
-            String output = String.Format("Timer: {0}:{1:00}", minutes, seconds);
+            String output = String.Format("Timer: {0}:{1:00}.{2:000}", runTime.Minutes, runTime.Seconds, runTime.Milliseconds);
             timerLabel.Dispatcher.BeginInvoke(new Action(() => { timerLabel.Content = output; }));
         }
     }
