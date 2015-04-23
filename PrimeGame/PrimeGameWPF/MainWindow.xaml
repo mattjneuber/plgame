@@ -1,8 +1,8 @@
-﻿<Window x:Class="Prime_Game.MainWindow"
+﻿<Window x:Class="PrimeGameWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Prime Game" Height="499" Width="414" ResizeMode="NoResize">
-    <Canvas Name="canvas">
+    <Canvas Name="canvas" Loaded="canvas_Loaded">
         <Line X1="0" Y1="50" X2="400" Y2="50" Stroke="Black"/>
         <Line X1="0" Y1="100" X2="400" Y2="100" Stroke="Black"/>
         <Line X1="0" Y1="150" X2="400" Y2="150" Stroke="Black"/>

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Prime_Game
+namespace PrimeGameWPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -32,6 +32,7 @@ namespace Prime_Game
                                                   {false, false, false, false, false, false, false, false},
                                                   {false, false, false, false, false, false, false, false},
                                                   {false, false, false, false, false, false, false, false},};
+        DateTime startTime;
 
         private void rect_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -102,7 +103,7 @@ namespace Prime_Game
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Nope!");
+            MessageBox.Show("Nope!", "Sorry!");
         }
 
 
@@ -159,8 +160,19 @@ namespace Prime_Game
                 if (!filled) break;
             }
 
-            // if won display win message
-            if (width > 1 && height > 1 && filled && width * height == 4) MessageBox.Show("You won!");
+            // if won display win message; show time taken
+            if (width > 1 && height > 1 && filled && width * height == 4)
+            {
+                DateTime finishTime = DateTime.Now;
+                TimeSpan runTime = finishTime - startTime;
+                MessageBox.Show("You won!\n" + "Time Taken: " + runTime.TotalSeconds + " seconds", "Congratulations!");
+            }
+        }
+
+        private void canvas_Loaded(object sender, RoutedEventArgs e)
+        {
+            // start the timer
+            startTime = DateTime.Now;
         }
     }
 }
