@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Timers;
 
 namespace PrimeGameWPF
 {
@@ -198,6 +199,22 @@ namespace PrimeGameWPF
 
             // start the timer
             startTime = DateTime.Now;
+
+            Timer timer = new Timer();
+            timer.Elapsed += delegate { updateTimer(startTime); };
+            timer.Interval = 500;
+            timer.Start();
+        }
+
+        public void updateTimer(DateTime st)
+        {
+            DateTime finishTime = DateTime.Now;
+            TimeSpan runTime = finishTime - st;
+            double totalSeconds = runTime.TotalSeconds;
+            int minutes = (int) totalSeconds/60;
+            int seconds = (int) totalSeconds % 60;
+            String output = String.Format("Timer: {0}:{1:00}", minutes, seconds);
+            timerLabel.Dispatcher.BeginInvoke(new Action(() => { timerLabel.Content = output; }));
         }
     }
 }

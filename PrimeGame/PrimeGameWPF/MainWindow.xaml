@@ -24,5 +24,6 @@
             Canvas.Left="294" Canvas.Top="406" Width="102" Height="50"
             Click="button_Click"
             />
+        <Label x:Name="timerLabel" Content="" Canvas.Left="5" Canvas.Top="416" RenderTransformOrigin="0.561,0.105"/>
     </Canvas>
 </Window>
