@@ -1,0 +1,13 @@
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\WpfApplication1\bin\Debug\WpfApplication1.exe.config
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\WpfApplication1\obj\Debug\WpfApplication1.exe
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\WpfApplication1\obj\Debug\WpfApplication1.pdb
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\WpfApplication1\bin\Debug\WpfApplication1.exe
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\WpfApplication1\bin\Debug\WpfApplication1.pdb
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\WpfApplication1\obj\Debug\MainWindow.baml
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\WpfApplication1\obj\Debug\MainWindow.g.cs
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\WpfApplication1\obj\Debug\App.g.cs
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\WpfApplication1\obj\Debug\WpfApplication1_MarkupCompile.cache
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\WpfApplication1\obj\Debug\WpfApplication1.g.resources
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\WpfApplication1\obj\Debug\WpfApplication1.Properties.Resources.resources
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\WpfApplication1\obj\Debug\PrimeGame WPF.csproj.GenerateResource.Cache
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\WpfApplication1\obj\Debug\PrimeGame WPF.csprojResolveAssemblyReference.cache

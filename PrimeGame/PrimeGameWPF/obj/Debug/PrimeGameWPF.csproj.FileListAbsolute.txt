@@ -1,0 +1,13 @@
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGameWPF\bin\Debug\PrimeGameWPF.exe.config
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGameWPF\bin\Debug\PrimeGameWPF.exe
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGameWPF\bin\Debug\PrimeGameWPF.pdb
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGameWPF\obj\Debug\PrimeGameWPF.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGameWPF\obj\Debug\MainWindow.baml
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGameWPF\obj\Debug\MainWindow.g.cs
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGameWPF\obj\Debug\App.g.cs
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGameWPF\obj\Debug\PrimeGameWPF_MarkupCompile.cache
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGameWPF\obj\Debug\PrimeGameWPF.g.resources
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGameWPF\obj\Debug\PrimeGameWPF.Properties.Resources.resources
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGameWPF\obj\Debug\PrimeGameWPF.csproj.GenerateResource.Cache
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGameWPF\obj\Debug\PrimeGameWPF.exe
+C:\Users\User\Documents\GitHub\plgame\PrimeGame\PrimeGameWPF\obj\Debug\PrimeGameWPF.pdb
