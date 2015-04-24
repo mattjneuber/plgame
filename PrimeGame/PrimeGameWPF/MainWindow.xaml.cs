@@ -165,13 +165,16 @@ namespace PrimeGameWPF
 
         private void canvas_Loaded(object sender, RoutedEventArgs e)
         {
+            Random rnd = new Random();
+            int newDesc = rnd.Next(0, 8);
+
             // location and color of game pieces
-            int[] rows = { 1, 2, 3, 4 };
+            int[] rows = { newDesc, 2, 3, 4 };
             int[] columns = { 1, 3, 5, 2 };
             Color[] colors = { Colors.Blue, Colors.Red, Colors.Green, Colors.Yellow };
-            
-            // mark all cells as unoccupied
-            cellOccupied = new Boolean[,] {{false, false, false, false, false, false, false, false},
+
+                // mark all cells as unoccupied
+                cellOccupied = new Boolean[,] {{false, false, false, false, false, false, false, false},
                                            {false, false, false, false, false, false, false, false},
                                            {false, false, false, false, false, false, false, false},
                                            {false, false, false, false, false, false, false, false},
@@ -212,6 +215,22 @@ namespace PrimeGameWPF
             TimeSpan runTime = finishTime - st;
             String output = String.Format("Timer: {0}:{1:00}.{2:000}", runTime.Minutes, runTime.Seconds, runTime.Milliseconds);
             timerLabel.Dispatcher.BeginInvoke(new Action(() => { timerLabel.Content = output; }));
+        }
+
+
+        public static Boolean isPrime(int number)
+        {
+            int boundery = (int)Math.Floor(Math.Sqrt(number));
+
+            if (number == 1) return false;
+            if (number == 2) return true;
+
+            for (int i = 2; i <= boundery; i++)
+            {
+                if (number % i == 0) return false;
+            }
+
+            return true;
         }
     }
 }
