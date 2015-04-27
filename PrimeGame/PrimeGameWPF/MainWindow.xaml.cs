@@ -166,12 +166,29 @@ namespace PrimeGameWPF
         private void canvas_Loaded(object sender, RoutedEventArgs e)
         {
             Random rnd = new Random();
-            int newDesc = rnd.Next(0, 8);
+            int num_GamePieces = rnd.Next(1, 65);
 
             // location and color of game pieces
-            int[] rows = { newDesc, 2, 3, 4 };
+            int[] rows = { rnd.Next(0,8), rnd.Next(0,8), 3, 4 };
             int[] columns = { 1, 3, 5, 2 };
             Color[] colors = { Colors.Blue, Colors.Red, Colors.Green, Colors.Yellow };
+
+            int[] Dest = new int[num_GamePieces];
+            int[] newDest = new int[num_GamePieces];
+
+            for (int i = 0; i < num_GamePieces; i++)
+            {
+                newDest[i] = i % 8;
+                Dest[i] = i % 8;
+            }
+
+            Shuffle(newDest);
+            Shuffle(Dest);
+
+            for (int temp = 0; temp < num_GamePieces; temp++)
+            {
+                Console.WriteLine("{0} , {1}", newDest[temp], Dest[temp]);
+            }
 
                 // mark all cells as unoccupied
                 cellOccupied = new Boolean[,] {{false, false, false, false, false, false, false, false},
@@ -184,20 +201,20 @@ namespace PrimeGameWPF
                                            {false, false, false, false, false, false, false, false},};
             
             // create game pieces
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < num_GamePieces; i++)
             {
                 Rectangle rect = new Rectangle();
                 rect.Width = 50;
                 rect.Height = 50;
-                rect.Fill = new SolidColorBrush(colors[i]);
+                rect.Fill = new SolidColorBrush(colors[1]);
                 rect.Stroke = new SolidColorBrush(Colors.Black);
                 rect.MouseLeftButtonDown += rect_MouseLeftButtonDown;
                 rect.MouseLeftButtonUp += rect_MouseLeftButtonUp;
                 rect.MouseMove += rect_MouseMove;
                 canvas.Children.Add(rect);
-                Canvas.SetTop(rect, rect.Height * rows[i]);
-                Canvas.SetLeft(rect, rect.Width * columns[i]);
-                cellOccupied[rows[i], columns[i]] = true;
+                Canvas.SetTop(rect, rect.Height * newDest[i]);
+                Canvas.SetLeft(rect, rect.Width * Dest[i]);
+                cellOccupied[newDest[i], Dest[i]] = true;
             }
 
             // start the timer
@@ -217,7 +234,7 @@ namespace PrimeGameWPF
             timerLabel.Dispatcher.BeginInvoke(new Action(() => { timerLabel.Content = output; }));
         }
 
-
+        //Check if the number of gamePieces is a prime number
         public static Boolean isPrime(int number)
         {
             int boundery = (int)Math.Floor(Math.Sqrt(number));
@@ -231,6 +248,19 @@ namespace PrimeGameWPF
             }
 
             return true;
+        }
+        //Shuffles the row and column of the gamePieces randomly.
+        public static void Shuffle(int[] array)
+        {
+            Random rnd = new Random(Guid.NewGuid().GetHashCode());
+            for (int i = array.Length; i > 1; i--)
+            {
+                int j = rnd.Next(i);  // 0 <= j <= i-1
+                //swap
+                int tmp = array[j];
+                array[j] = array[i - 1];
+                array[i - 1] = tmp;
+            }
         }
     }
 }
