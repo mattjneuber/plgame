@@ -27,6 +27,7 @@ namespace PrimeGameWPF
         Point rectOriginPos;     // the original position of the rectangle
         Boolean[,] cellOccupied; // a 2d array representing which cells on the gameboard have pieces in them
         DateTime startTime;      // the time the game started
+        Boolean isGamePiecePrime;// is the number of game pieces a prime number
 
         private void rect_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -166,29 +167,44 @@ namespace PrimeGameWPF
         private void canvas_Loaded(object sender, RoutedEventArgs e)
         {
             Random rnd = new Random();
+
             int num_GamePieces = rnd.Next(1, 65);
+            int[] column = new int[num_GamePieces];
+            int[] row = new int[num_GamePieces];
+
+            isGamePiecePrime = isPrime(num_GamePieces);
 
             // location and color of game pieces
             int[] rows = { rnd.Next(0,8), rnd.Next(0,8), 3, 4 };
             int[] columns = { 1, 3, 5, 2 };
             Color[] colors = { Colors.Blue, Colors.Red, Colors.Green, Colors.Yellow };
 
-            int[] Dest = new int[num_GamePieces];
-            int[] newDest = new int[num_GamePieces];
+            
 
             for (int i = 0; i < num_GamePieces; i++)
             {
-                newDest[i] = i % 8;
-                Dest[i] = i % 8;
+                row[i] = i % 8;
+                column[i] = i % 8;
             }
 
-            Shuffle(newDest);
-            Shuffle(Dest);
+            Shuffle(row);
+            Shuffle(column);
 
-            for (int temp = 0; temp < num_GamePieces; temp++)
+            //checks if there is a repeated location and change it's location. Slow with large number of pieces
+            for (int i = 1; i < 2; i++)
             {
-                Console.WriteLine("{0} , {1}", newDest[temp], Dest[temp]);
+                if (check_Location(row, column))
+                {
+                    i--;
+                }
             }
+
+                for (int temp = 0; temp < num_GamePieces; temp++)
+                {
+                    Console.WriteLine("{0} , {1}", row[temp], column[temp]);
+                }
+
+            //check_Location(row, column);
 
                 // mark all cells as unoccupied
                 cellOccupied = new Boolean[,] {{false, false, false, false, false, false, false, false},
@@ -212,9 +228,9 @@ namespace PrimeGameWPF
                 rect.MouseLeftButtonUp += rect_MouseLeftButtonUp;
                 rect.MouseMove += rect_MouseMove;
                 canvas.Children.Add(rect);
-                Canvas.SetTop(rect, rect.Height * newDest[i]);
-                Canvas.SetLeft(rect, rect.Width * Dest[i]);
-                cellOccupied[newDest[i], Dest[i]] = true;
+                Canvas.SetTop(rect, rect.Height * row[i]);
+                Canvas.SetLeft(rect, rect.Width * column[i]);
+                cellOccupied[row[i], column[i]] = true;
             }
 
             // start the timer
@@ -261,6 +277,27 @@ namespace PrimeGameWPF
                 array[j] = array[i - 1];
                 array[i - 1] = tmp;
             }
+        }
+
+        //check to see if there is a repeting location and change is it.
+        public static Boolean check_Location(int[] rows, int[] columns)
+        {
+            Boolean result = false;
+            Random rnd = new Random();
+
+            for (int i = 0; i < rows.Length; i++)
+            {
+                for (int j = i + 1; j < columns.Length; j++)
+                {
+                    if (rows[i] == rows[j] && columns[i] == columns[j])
+                    {
+                        Console.WriteLine("Same");
+                        result = true;
+                        columns[j] = rnd.Next(0, 8);
+                    }
+                }
+            }
+            return result;
         }
     }
 }
