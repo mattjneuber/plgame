@@ -28,6 +28,8 @@ namespace PrimeGameWPF
         Boolean[,] cellOccupied; // a 2d array representing which cells on the gameboard have pieces in them
         DateTime startTime;      // the time the game started
         Boolean isGamePiecePrime;// is the number of game pieces a prime number
+        int num_GamePieces;
+ 
 
         private void rect_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -98,6 +100,11 @@ namespace PrimeGameWPF
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            if (isGamePiecePrime == true)
+            {
+                MessageBox.Show("Yay!", "You win!");
+            }
+            else
             MessageBox.Show("Nope!", "Sorry!");
         }
 
@@ -156,7 +163,7 @@ namespace PrimeGameWPF
             }
 
             // if won display win message; show time taken
-            if (width > 1 && height > 1 && filled && width * height == 4)
+            if (width > 1 && height > 1 && filled && width * height == num_GamePieces)
             {
                 DateTime finishTime = DateTime.Now;
                 TimeSpan runTime = finishTime - startTime;
@@ -168,7 +175,7 @@ namespace PrimeGameWPF
         {
             Random rnd = new Random();
 
-            int num_GamePieces = rnd.Next(1, 65);
+            num_GamePieces = rnd.Next(1, 33);
             int[] column = new int[num_GamePieces];
             int[] row = new int[num_GamePieces];
 
@@ -204,7 +211,7 @@ namespace PrimeGameWPF
                     Console.WriteLine("{0} , {1}", row[temp], column[temp]);
                 }
 
-            //check_Location(row, column);
+                Console.WriteLine(isGamePiecePrime);
 
                 // mark all cells as unoccupied
                 cellOccupied = new Boolean[,] {{false, false, false, false, false, false, false, false},
@@ -222,7 +229,7 @@ namespace PrimeGameWPF
                 Rectangle rect = new Rectangle();
                 rect.Width = 50;
                 rect.Height = 50;
-                rect.Fill = new SolidColorBrush(colors[1]);
+                rect.Fill = new SolidColorBrush(colors[rnd.Next(4)]);
                 rect.Stroke = new SolidColorBrush(Colors.Black);
                 rect.MouseLeftButtonDown += rect_MouseLeftButtonDown;
                 rect.MouseLeftButtonUp += rect_MouseLeftButtonUp;
