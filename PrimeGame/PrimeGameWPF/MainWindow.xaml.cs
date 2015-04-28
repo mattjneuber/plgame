@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Timers;
 
+
 namespace PrimeGameWPF
 {
     /// <summary>
@@ -103,6 +104,7 @@ namespace PrimeGameWPF
             if (isGamePiecePrime == true)
             {
                 MessageBox.Show("Yay!", "You win!");
+                restart();
             }
             else
             MessageBox.Show("Nope!", "Sorry!");
@@ -168,14 +170,18 @@ namespace PrimeGameWPF
                 DateTime finishTime = DateTime.Now;
                 TimeSpan runTime = finishTime - startTime;
                 MessageBox.Show("You won!\n" + "Time Taken: " + runTime.TotalSeconds + " seconds", "Congratulations!");
+                restart();
             }
         }
 
+        private void loadIt() { 
+
+}
         private void canvas_Loaded(object sender, RoutedEventArgs e)
         {
             Random rnd = new Random();
 
-            num_GamePieces = rnd.Next(1, 33);
+            num_GamePieces = rnd.Next(1, 25);
             int[] column = new int[num_GamePieces];
             int[] row = new int[num_GamePieces];
 
@@ -305,6 +311,18 @@ namespace PrimeGameWPF
                 }
             }
             return result;
+        }
+
+        private void reset_Click(object sender, RoutedEventArgs e)
+        {
+            restart();
+        }
+
+        private void restart()
+        {
+            // There's no reason not to just start the game over again completely, so that's what we'll do
+            System.Diagnostics.Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            this.Close();
         }
     }
 }
