@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 namespace PrimeGame
 {
-    public class GameBoard
+    public class GameBoard  ///Gameboard class
     {
         int sizeX = 30;
         int sizeY = 30;
