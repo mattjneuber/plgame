@@ -29,9 +29,9 @@ namespace PrimeGameWPF
         Boolean[,] cellOccupied; // a 2d array representing which cells on the gameboard have pieces in them
         DateTime startTime;      // the time the game started
         Boolean isGamePiecePrime;// is the number of game pieces a prime number
-        int num_GamePieces;
+        int num_GamePieces;	 // The total number of game peices
  
-
+	//Left mouse button down action handler.
         private void rect_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             // get the rectangle which was grabbed
@@ -49,7 +49,7 @@ namespace PrimeGameWPF
             rectGrab = true;
         }
 
-
+	//Left mouse button release action handler.
         private void rect_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             // set rect grab to false
@@ -85,7 +85,7 @@ namespace PrimeGameWPF
             Canvas.SetZIndex(rectGrabbed, 0);
         }
 
-
+	//Adjust the rectagle position based on the current mouse position.
         private void rect_MouseMove(object sender, MouseEventArgs e)
         {
             if (rectGrab)
@@ -98,7 +98,7 @@ namespace PrimeGameWPF
             }
         }
 
-
+	//Prime button click handler.
         private void button_Click(object sender, RoutedEventArgs e)
         {
             if (isGamePiecePrime == true)
@@ -110,7 +110,7 @@ namespace PrimeGameWPF
             MessageBox.Show("Nope!", "Sorry!");
         }
 
-
+	//Iterate through gamespace array in order to check if it has been solved automatically.
         private void checkIfSolved()
         {
             int firstRow = 0;
@@ -176,9 +176,9 @@ namespace PrimeGameWPF
 
         private void loadIt() { 
 
-}
-        private void canvas_Loaded(object sender, RoutedEventArgs e)
-        {
+	}
+
+        private void canvas_Loaded(object sender, RoutedEventArgs e) {
             Random rnd = new Random();
 
             num_GamePieces = rnd.Next(1, 25);
@@ -204,16 +204,13 @@ namespace PrimeGameWPF
             Shuffle(column);
 
             //checks if there is a repeated location and change it's location. Slow with large number of pieces
-            for (int i = 1; i < 2; i++)
-            {
-                if (check_Location(row, column))
-                {
+            for (int i = 1; i < 2; i++) {
+                if (check_Location(row, column)) {
                     i--;
                 }
             }
 
-                for (int temp = 0; temp < num_GamePieces; temp++)
-                {
+                for (int temp = 0; temp < num_GamePieces; temp++) {
                     Console.WriteLine("{0} , {1}", row[temp], column[temp]);
                 }
 
@@ -230,8 +227,7 @@ namespace PrimeGameWPF
                                            {false, false, false, false, false, false, false, false},};
             
             // create game pieces
-            for (int i = 0; i < num_GamePieces; i++)
-            {
+            for (int i = 0; i < num_GamePieces; i++) {
                 Rectangle rect = new Rectangle();
                 rect.Width = 50;
                 rect.Height = 50;
@@ -254,9 +250,9 @@ namespace PrimeGameWPF
             timer.Interval = 10;
             timer.Start();
         }
-
-        public void updateTimer(DateTime st)
-        {
+	
+	//Update and display timer.
+        public void updateTimer(DateTime st) {
             DateTime finishTime = DateTime.Now;
             TimeSpan runTime = finishTime - st;
             String output = String.Format("Timer: {0}:{1:00}.{2:000}", runTime.Minutes, runTime.Seconds, runTime.Milliseconds);
@@ -313,13 +309,11 @@ namespace PrimeGameWPF
             return result;
         }
 
-        private void reset_Click(object sender, RoutedEventArgs e)
-        {
+        private void reset_Click(object sender, RoutedEventArgs e) {
             restart();
         }
 
-        private void restart()
-        {
+        private void restart() {
             // There's no reason not to just start the game over again completely, so that's what we'll do
             System.Diagnostics.Process.Start(System.Reflection.Assembly.GetExecutingAssembly().Location);
             this.Close();
