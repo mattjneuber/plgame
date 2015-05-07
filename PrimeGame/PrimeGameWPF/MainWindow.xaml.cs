@@ -181,7 +181,11 @@ namespace PrimeGameWPF
         private void canvas_Loaded(object sender, RoutedEventArgs e) {
             Random rnd = new Random();
 
-            num_GamePieces = rnd.Next(1, 25);
+            // good primes are  3, 5, 7,11,13,17,19,23,29,31,37,41,43,47
+            // good comps are   4, 6, 8, 9,10,12,14,15,16,18,20,21,24,25
+            // bad  comps are  22
+            num_GamePieces = rnd.Next(3, 22);
+            
             int[] column = new int[num_GamePieces];
             int[] row = new int[num_GamePieces];
 
